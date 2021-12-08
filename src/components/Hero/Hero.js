@@ -4,7 +4,17 @@ import styled from 'styled-components/macro';
 const Hero = () => {
   return (
     <Wrapper>
-      <HeroImage src="/images/hero-img.jpg" />
+      <picture>
+        <source
+          srcset="
+            /images/hero-img.avif 1x,
+            /images/hero-img@2x.avif 2x,
+            /images/hero-img@3x.avif 3x
+          "
+        />
+        <HeroImage alt="Hero Cat" src="/images/hero-img.jpg" />
+      </picture>
+      
       <Swoop src="/swoop.svg" />
     </Wrapper>
   );
@@ -21,6 +31,7 @@ const Wrapper = styled.section`
 `;
 
 const HeroImage = styled.img`
+  object-fit: cover;
   display: block;
   width: 500px;
   height: 500px;
